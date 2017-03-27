@@ -6,11 +6,8 @@
 package weatherfetch;
 
 import com.google.gson.*;
-import com.google.gson.JsonArray;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.MalformedURLException;
@@ -27,7 +24,6 @@ public class WeatherFetcher {
     final String OWM_API_URL;
     final String OWM_CITY;
     final String OWM_API_KEY;
-    Gson gson;
     
     /**
      * Constructor for the WeatherFetcher. Requires a city name and country code.
