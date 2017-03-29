@@ -72,6 +72,7 @@ public class WeatherFetcher {
             String input;
             while((input = br.readLine()) != null){
                 JsonObject jo = (JsonObject)parser.parse(input);
+                
                 city.setCity(jo.get("name").toString());
                 
                 JsonObject main = jo.getAsJsonObject("main");
