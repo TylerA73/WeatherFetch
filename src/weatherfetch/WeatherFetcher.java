@@ -109,7 +109,8 @@ public class WeatherFetcher {
      * @throws IOException 
      */
     public static void main(String[] args) throws IOException{
-        WeatherFetcher wf = new WeatherFetcher("edmonton", "ca");
+        Locator loc = new Locator();
+        WeatherFetcher wf = new WeatherFetcher(loc.getCity(), loc.getCountry());
         City city = wf.getData();
         
         System.out.println(city.getCity());
