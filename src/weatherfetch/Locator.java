@@ -20,6 +20,7 @@ import java.net.URLConnection;
 public class Locator {
     
     private final String URL = "http://freegeoip.net/json/";
+    private String ip;
     private String city;
     private String country;
     private String latitude;
@@ -34,10 +35,9 @@ public class Locator {
         
         try{
             
-            URL ipapi = new URL(URL);
+            URL url = new URL(URL);
 
-            URLConnection conn = ipapi.openConnection();
-            conn.setRequestProperty("User-Agent", "java-ipapi-client");
+            URLConnection conn = url.openConnection();
             InputStreamReader isr = new InputStreamReader(conn.getInputStream());
             BufferedReader reader = new BufferedReader(isr);
             
@@ -45,6 +45,7 @@ public class Locator {
             JsonObject jo = (JsonObject) parser.parse(input);
             reader.close();
             
+            setIp(jo.get("ip").toString());
             setCity(jo.get("city").toString());
             setCountry(jo.get("country_code").toString());
             setLatitude(jo.get("latitude").toString());
@@ -58,6 +59,10 @@ public class Locator {
         }
         
         
+    }
+    
+    public void setIp(String ip){
+        this.ip = ip;
     }
     
     public void setCity(String city){
@@ -74,6 +79,10 @@ public class Locator {
     
     public void setLongitude(String longitude){
         this.longitude = longitude;
+    }
+    
+    public String getIp(){
+        return ip;
     }
     
     public String getCity(){
